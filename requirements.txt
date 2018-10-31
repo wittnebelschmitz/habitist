@@ -4,7 +4,7 @@ bondpy==1.8.3
 camera-calibration==1.12.23
 camera-calibration-parsers==1.11.13
 catkin==0.7.14
-certifi==2017.11.5
+certifi==2018.10.15
 chardet==3.0.4
 Click==7.0
 cv-bridge==1.12.8
@@ -22,7 +22,7 @@ genmsg==0.5.11
 gennodejs==2.0.1
 genpy==0.6.7
 gunicorn==19.7.1
-idna==2.6
+idna==2.7
 image-geometry==1.12.8
 interactive-markers==1.11.4
 itsdangerous==1.1.0
@@ -37,7 +37,7 @@ qt-dotgraph==0.3.11
 qt-gui==0.3.11
 qt-gui-cpp==0.3.11
 qt-gui-py-common==0.3.11
-requests==2.18.4
+requests==2.20.0
 resource-retriever==1.12.4
 rosbag==1.12.14
 rosboost-cfg==1.14.4
@@ -104,6 +104,6 @@ tf2-py==0.5.18
 tf2-ros==0.5.18
 todoist-python==7.0.18
 topic-tools==1.12.14
-urllib3==1.22
+urllib3==1.24
 Werkzeug==0.14.1
 xacro==1.11.3
