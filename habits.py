@@ -18,19 +18,19 @@ def is_habit(text):
 
 
 def is_today(text):
-    today = (datetime.utcnow() + timedelta(1)).strftime("%a %d %b")
-    return text[:10] == today
+    today = (datetime.utcnow() + timedelta(1)).strftime("%Y-%m-%d")
+    return text == today
 
 
 def is_due(text):
-    yesterday = datetime.utcnow().strftime("%a %d %b")
-    return text[:10] == yesterday
+    yesterday = datetime.utcnow().strftime("%Y-%m-%d")
+    return text == yesterday
 
 
-def update_streak(item, streak):
+def update_streak(task, streak):
     days = '[day {}]'.format(streak)
-    text = re.sub(r'\[day\s(\d+)\]', days, item['content'])
-    item.update(content=text)
+    text = re.sub(r'\[day\s(\d+)\]', days, task['content'])
+    task.update(content=text, due={'string': 'ev day'})
 
 
 def main():
@@ -43,14 +43,14 @@ def main():
     api.sync()
     tasks = api.state['items']
     for task in tasks:
-        if task['due_date_utc'] and is_habit(task['content']):
-            if is_today(task['due_date_utc']):
+        if task['due'] and is_habit(task['content']) and not task['in_history']:
+            if is_today(task['due']['date']):
                 habit = is_habit(task['content'])
                 streak = int(habit.group(1)) + 1
                 update_streak(task, streak)
-            elif is_due(task['due_date_utc']):
+            elif is_due(task['due']['date']):
                 update_streak(task, 0)
-                task.update(date_string='ev day starting tod')
+                task.update(due={'string': 'ev day'})
     api.commit()
 
 if __name__ == '__main__':
