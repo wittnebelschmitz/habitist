@@ -7,6 +7,7 @@ from todoist.api import TodoistAPI
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
+TODOIST_DATE_FORMAT = "%Y-%m-%d"
 
 def get_token():
     token = os.getenv('TODOIST_APIKEY')
@@ -16,21 +17,23 @@ def get_token():
 def is_habit(text):
     return re.search(r'\[day\s(\d+)\]', text)
 
+def today_date():
+    return datetime.utcnow().strftime(TODOIST_DATE_FORMAT)
 
 def is_today(text):
-    today = (datetime.utcnow() + timedelta(1)).strftime("%Y-%m-%d")
+    today = datetime.utcnow().strftime(TODOIST_DATE_FORMAT)
     return text == today
 
 
 def is_due(text):
-    yesterday = datetime.utcnow().strftime("%Y-%m-%d")
+    yesterday = (datetime.utcnow() - timedelta(1)).strftime(TODOIST_DATE_FORMAT)
     return text == yesterday
 
 
 def update_streak(task, streak):
     days = '[day {}]'.format(streak)
     text = re.sub(r'\[day\s(\d+)\]', days, task['content'])
-    task.update(content=text, due={'string': 'ev day'})
+    task.update(content=text)
 
 
 def main():
@@ -50,7 +53,7 @@ def main():
                 update_streak(task, streak)
             elif is_due(task['due']['date']):
                 update_streak(task, 0)
-                task.update(due={'string': 'ev day'})
+                task.update(due={'string': 'ev day starting {}'.format(today_date())})
     api.commit()
 
 if __name__ == '__main__':
