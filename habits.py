@@ -18,15 +18,15 @@ def is_habit(text):
     return re.search(r'\[day\s(\d+)\]', text)
 
 def today_date():
-    return datetime.utcnow().strftime(TODOIST_DATE_FORMAT)
+    return (datetime.utcnow() + timedelta(1)).strftime(TODOIST_DATE_FORMAT)
 
 def is_today(text):
-    today = datetime.utcnow().strftime(TODOIST_DATE_FORMAT)
+    today = (datetime.utcnow() + timedelta(1)).strftime(TODOIST_DATE_FORMAT)
     return text == today
 
 
 def is_due(text):
-    yesterday = (datetime.utcnow() - timedelta(1)).strftime(TODOIST_DATE_FORMAT)
+    yesterday = datetime.utcnow().strftime(TODOIST_DATE_FORMAT)
     return text == yesterday
 
 
