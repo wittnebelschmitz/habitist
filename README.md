@@ -33,9 +33,13 @@ It integrates Seinfield's "[Don't Break the Chain](https://lifehacker.com/281626
     ```
     git push heroku master
     ```
- 
-5. On [IFTTT](http://ifttt.com/), [create](https://ifttt.com/create) a new applet. 
-    - On THIS, select datetime > 'Every Day At' > 12 AM
+5. Find your timezone difference from UTC. We need to trigger this API when it's 12:00 AM in UTC. You need to find the local time when it's 12:00 AM in UTC.     
+    `
+    For example, Nepal is 5:45 hrs ahead of UTC. For 12:00AM in UTC, we have 5:45AM here. So, we need to trigger this API anytime after 5:45AM. Do the same calculation for your timezone and set that time in step 6.
+    `
+
+6. On [IFTTT](http://ifttt.com/), [create](https://ifttt.com/create) a new applet.
+    - On THIS, select datetime > 'Every Day At' > `Time from step 5`
     - On THAT, select Webhooks > `Make a web request`
     - Set URL to your heroku app URL
     - Set METHOD to GET
