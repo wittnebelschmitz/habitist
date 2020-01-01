@@ -1,4 +1,4 @@
-name: Update habit sreaks everyday at 12:15 AM
+name: habitist
 
 on:
   schedule:
