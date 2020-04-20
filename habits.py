@@ -52,7 +52,9 @@ def main():
                 streak = int(habit.group(1)) + 1
                 update_streak(task, streak)
             elif is_due(task['due']['date']):
-                update_streak(task, 0)
+                streak = int(habit.group(1)) - 1
+                stream = max(0, streak)
+                update_streak(task, streak)
                 task.update(due={'string': 'ev day starting {}'.format(today_date())})
     api.commit()
 
