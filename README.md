@@ -29,7 +29,7 @@ It integrates Seinfield's "[Don't Break the Chain](https://lifehacker.com/281626
 
 ![Setting up todoist key](https://i.imgur.com/sdCRpBI.png)
 
-4. Find your timezone difference from UTC. We need to trigger this API when it's 12:00 AM in UTC. You need to find the local time when it's 12:00 AM in UTC.     
+4. We want to trigger this once after the day ends. So, find the time in UTC when it's 12AM in your country.
 > For example, Nepal is 5:45 hrs ahead of UTC. For 12:00AM in UTC, we have 5:45AM here. So, we need to trigger this API anytime after 5:45AM. Do the same calculation for your timezone and set that time in step 6.
 
 ## License
