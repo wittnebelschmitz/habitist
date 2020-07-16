@@ -29,6 +29,13 @@ It integrates Seinfield's "[Don't Break the Chain](https://lifehacker.com/281626
 
 ![Setting up todoist key](https://i.imgur.com/sdCRpBI.png)
 
+4. Goto `https://github.com/amitness/habitist/settings/secrets` by replacing `amitness` with your GitHub username. Click the `New Secret` button and add the key you got from step 3 as shown below.
+![Imgur](https://i.imgur.com/wuvxm0m.png)
+<p align="center">
+    <img src="https://i.imgur.com/HDsumw2.png"/>
+</p>
+
+
 4. We want to trigger this once the day ends. So, you will need to find the time in UTC when it's 12 AM in your country.
 > For example, Nepal is 5:45 hrs ahead of UTC. For 12:00 AM in Nepal, UTC time will be 6:15 pm i.e. 18:15.
 
