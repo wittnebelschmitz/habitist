@@ -49,6 +49,8 @@ You can use [https://www.thetimezoneconverter.com](https://www.thetimezoneconver
     <img src="https://i.imgur.com/Xyxl2Dk.png"/>
 </p>
 
+7. If everything is setup correctly, the streak on the tasks will automatically increase/decrease on the next day.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
