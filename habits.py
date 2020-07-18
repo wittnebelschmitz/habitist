@@ -57,7 +57,7 @@ class Task(object):
         Parse and get current stream from the pattern.
 
         Pattern: [day X]
-        :return:
+        :return: Current streak
         """
         habit = self.get_habit()
         return int(habit.group(1))
@@ -65,7 +65,6 @@ class Task(object):
     def set_streak(self, streak):
         """
         Set streak for a task.
-        :param task: Todoist Task
         :param streak: Number of days
         :return: None
         """
@@ -77,7 +76,7 @@ class Task(object):
         """
         Increase streak by n days.
         Default: 1 day
-        :param n: Days
+        :param n: Number of days
         """
         self.set_streak(self.current_streak + n)
 
@@ -88,6 +87,13 @@ class Task(object):
         """
         streak = max(0, self.current_streak - 1)
         self.set_streak(streak)
+        self.item.update(due={'string': 'ev day starting {}'.format(today)})
+
+    def reset_to_zero(self, today):
+        """
+        Set streak to zero.
+        """
+        self.set_streak(0)
         self.item.update(due={'string': 'ev day starting {}'.format(today)})
 
 
@@ -109,7 +115,7 @@ class Todoist(object):
             task = Task(item)
             if task.is_habit():
                 if task.is_due(self.today):
-                    task.decrease(self.today)
+                    task.reset_to_zero(self.today)
                 else:
                     task.increase()
         self.api.commit()
