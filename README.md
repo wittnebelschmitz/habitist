@@ -1,7 +1,7 @@
 # habitist ![habitist](https://github.com/amitness/habitist/workflows/habitist/badge.svg)
 An automation to enable habit tracking in todoist. 
 
-It integrates Seinfield's "[Don't Break the Chain](https://lifehacker.com/281626/jerry-seinfelds-productivity-secret)" method into [todoist](http://todoist.com/). Once it's setup, you can forget about it and it works seamlessly.  
+It integrates "Don't Break the Chain" method for habit building into [todoist](http://todoist.com/). Once it's setup, you can forget about it and it works seamlessly.  
 <p align="center">
     <img src="https://i.imgur.com/PVp2TBs.png"/>
 </p>
